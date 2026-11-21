@@ -1,0 +1,8 @@
+{
+  "repository": "CentralSpringfieldLL/Public_Assets",
+  "productionBranch": "main",
+  "canonicalBaseUrl": null,
+  "cloudflareProject": null,
+  "deploymentMode": "cloudflare-pages-git-integration",
+  "setupComplete": false
+}

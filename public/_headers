@@ -1,0 +1,11 @@
+/newsletters/*
+  Cache-Control: public, max-age=31536000, immutable
+  X-Content-Type-Options: nosniff
+
+/documents/*
+  Cache-Control: public, max-age=31536000, immutable
+  X-Content-Type-Options: nosniff
+
+/assets-manifest.json
+  Cache-Control: public, max-age=60, must-revalidate
+  X-Content-Type-Options: nosniff

@@ -1,0 +1,30 @@
+{
+  "version": 1,
+  "repository": "CentralSpringfieldLL/Public_Assets",
+  "assets": [
+    {
+      "key": "newsletters/2026-11-21/field-maintenance-2026-11-14-1-32422231c1b0.jpg",
+      "sha256": "32422231c1b0d4492a843ad8c4b5c6a74bacaae7a9f937220df964cd403311ff",
+      "bytes": 447784,
+      "contentType": "image/jpeg",
+      "githubRawUrl": "https://raw.githubusercontent.com/CentralSpringfieldLL/Public_Assets/main/public/newsletters/2026-11-21/field-maintenance-2026-11-14-1-32422231c1b0.jpg",
+      "cloudflareUrl": null
+    },
+    {
+      "key": "newsletters/2026-11-21/field-maintenance-2026-11-14-2-1ccb2c8ffb13.jpg",
+      "sha256": "1ccb2c8ffb13b661e4ad507aa7cc6f5cd9f4ef60f22c59d154d45e96f52e6fba",
+      "bytes": 891712,
+      "contentType": "image/jpeg",
+      "githubRawUrl": "https://raw.githubusercontent.com/CentralSpringfieldLL/Public_Assets/main/public/newsletters/2026-11-21/field-maintenance-2026-11-14-2-1ccb2c8ffb13.jpg",
+      "cloudflareUrl": null
+    },
+    {
+      "key": "newsletters/2026-11-21/field-maintenance-2026-11-14-3-525adb9dc6ad.jpg",
+      "sha256": "525adb9dc6ad5fe440bdf91a9ee5afd8beb16808fa7228d20a77d55b16a070a7",
+      "bytes": 683339,
+      "contentType": "image/jpeg",
+      "githubRawUrl": "https://raw.githubusercontent.com/CentralSpringfieldLL/Public_Assets/main/public/newsletters/2026-11-21/field-maintenance-2026-11-14-3-525adb9dc6ad.jpg",
+      "cloudflareUrl": null
+    }
+  ]
+}
