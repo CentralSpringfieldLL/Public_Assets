@@ -2,9 +2,27 @@
 
 Photos and documents intentionally published for Central Springfield Little League communications. Originals stay outside this repository. Published filenames include a content hash; keep old files so sent emails continue to work.
 
-## Cloudflare Pages setup
+## Current Cloudflare Workers setup
 
-Connect this repository once from the CSLL Cloudflare account owned by webmaster@csll.org. The intended integration is Cloudflare Pages' native Git integration, which deploys repository pushes without a Cloudflare API key in GitHub Actions.
+The application is `csll-assets`, serving `https://assets.csll.org`. The repository is connected through Workers Builds, whose fields differ from Pages:
+
+| Setting | Value |
+| --- | --- |
+| Repository | `CentralSpringfieldLL/Public_Assets` |
+| Production branch | `main` |
+| Root directory | `/` |
+| Build command | `node scripts/validate.mjs` |
+| Deploy command | `npx wrangler deploy --name csll-assets --assets ./public` |
+
+The assets argument identifies the folder to publish; Workers has no separate Pages-style output-directory field. Keep the existing custom domain attached to this application. Cloudflare manages the native build authentication; no deployment secret is stored in GitHub Actions.
+
+On November 21, all three newsletter photos passed anonymous downloads, image decoding, and exact SHA-256 checks through Cloudflare. Root and JSON manifest requests received managed browser challenges. `assetServingVerified` and `automaticDeploymentVerified` in `hosting.json` deliberately track different claims; a reachable photo alone does not prove automatic Git deployment. The newly published `deployment-check.txt` is used to check that the updated build command deploys a new commit.
+
+Reference: [Workers Builds configuration](https://developers.cloudflare.com/workers/ci-cd/builds/configuration/), [Wrangler deployment options](https://developers.cloudflare.com/workers/wrangler/commands/workers/#deploy).
+
+## Alternative Cloudflare Pages setup
+
+These instructions describe the original Pages proposal. The current application uses Workers Builds as described above. Do not create a second application or move the hostname just to match the original proposal.
 
 1. In Cloudflare, choose the CSLL account, then Workers & Pages, Create application, Pages, Import an existing Git repository.
 2. Select `CentralSpringfieldLL/Public_Assets`. If needed, install and authorize the Cloudflare Workers & Pages GitHub app for this repository only.
@@ -16,7 +34,7 @@ No Pages Functions, R2 bucket, paid image service, or API-token deployment actio
 
 Cloudflare's Free plan currently allows 500 builds per month, 20,000 files per site, and 25 MiB per file. Newsletter image copies here remain below 1,000,000 bytes. Static Pages requests and bandwidth are included. These limits were checked on November 20, 2026 and should be rechecked when changing the hosting design.
 
-Until Cloudflare is connected, the manifest records public GitHub raw URLs separately, with `cloudflareUrl: null`. These are a temporary working source for newsletters, not evidence of a Cloudflare deployment.
+The manifest records the verified Cloudflare URLs and retains the original public GitHub raw URLs separately for historical reference. Current newsletter exports use Cloudflare photo URLs.
 
 ## Add files
 

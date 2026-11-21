@@ -1,0 +1,3 @@
+CSLL public assets deployment verification
+Release: 2026-11-21-cloudflare-assets-01
+Canonical host: https://assets.csll.org

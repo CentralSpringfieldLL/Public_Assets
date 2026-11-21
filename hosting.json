@@ -1,8 +1,11 @@
 {
   "repository": "CentralSpringfieldLL/Public_Assets",
   "productionBranch": "main",
-  "canonicalBaseUrl": null,
-  "cloudflareProject": null,
-  "deploymentMode": "cloudflare-pages-git-integration",
-  "setupComplete": false
+  "canonicalBaseUrl": "https://assets.csll.org",
+  "cloudflareProject": "csll-assets",
+  "deploymentMode": "cloudflare-workers-git-integration",
+  "setupComplete": false,
+  "assetServingVerified": true,
+  "automaticDeploymentVerified": false,
+  "verificationNote": "All three photos verified through Cloudflare. Root and assets-manifest.json receive managed browser challenges. Automatic deployment verification pending."
 }
