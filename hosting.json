@@ -4,8 +4,10 @@
   "canonicalBaseUrl": "https://assets.csll.org",
   "cloudflareProject": "csll-assets",
   "deploymentMode": "cloudflare-workers-git-integration",
-  "setupComplete": false,
+  "setupComplete": true,
   "assetServingVerified": true,
-  "automaticDeploymentVerified": false,
-  "verificationNote": "All three photos verified through Cloudflare. Root and assets-manifest.json receive managed browser challenges. Automatic deployment verification pending."
+  "automaticDeploymentVerified": true,
+  "verificationNote": "Automatic deployment verified for commit 26e46bf by successful Cloudflare build and exact new deployment-check.txt contents. All three photos verified. Root and JSON manifest still receive managed challenges.",
+  "verifiedDeploymentCommit": "26e46bf4c0fc75fd57cbf349e8eaffab947dd567",
+  "remoteManifestAnonymousAccess": false
 }

@@ -16,7 +16,7 @@ The application is `csll-assets`, serving `https://assets.csll.org`. The reposit
 
 The assets argument identifies the folder to publish; Workers has no separate Pages-style output-directory field. `wrangler.jsonc` also supplies the application name, asset directory, and required compatibility date. The date is pinned to `2026-11-19`, as recommended by the build runtime; do not replace it with an unsupported future date. Keep the existing custom domain attached to this application. Cloudflare manages the native build authentication; no deployment secret is stored in GitHub Actions.
 
-On November 21, all three newsletter photos passed anonymous downloads, image decoding, and exact SHA-256 checks through Cloudflare. Root and JSON manifest requests received managed browser challenges. `assetServingVerified` and `automaticDeploymentVerified` in `hosting.json` deliberately track different claims; a reachable photo alone does not prove automatic Git deployment. The newly published `deployment-check.txt` is used to check that the updated build command deploys a new commit.
+On November 21, all three newsletter photos passed anonymous downloads, image decoding, and exact SHA-256 checks through Cloudflare. Automatic deployment was verified for commit `26e46bf`: the Cloudflare Workers build succeeded and the newly pushed `deployment-check.txt` was served at the canonical hostname with exact matching contents. Root and JSON manifest requests still received managed browser challenges, so their anonymous access is not claimed.
 
 Reference: [Workers Builds configuration](https://developers.cloudflare.com/workers/ci-cd/builds/configuration/), [Wrangler deployment options](https://developers.cloudflare.com/workers/wrangler/commands/workers/#deploy).
 
@@ -43,7 +43,7 @@ node scripts/add-assets.mjs --group newsletters/YYYY-MM-DD --file PATH [--file P
 node scripts/validate.mjs
 ```
 
-Review the new assets and manifest, commit only intended files, and push. After the Cloudflare deployment for that commit succeeds, run the public verifier against the canonical domain. It checks the current manifest and every asset's exact byte hash without authentication. To verify temporary GitHub raw hosting, use `node scripts/verify-public.mjs --github`.
+Review the new assets and manifest, commit only intended files, and push. After the Cloudflare deployment for that commit succeeds, run `node scripts/verify-public.mjs https://assets.csll.org --assets-only`. This explicitly checks every asset's exact byte hash and image MIME type without claiming remote-manifest access. The strict mode without that option additionally checks the production JSON manifest and currently fails at its browser challenge. Preserve that failure distinction. To verify historical GitHub raw hosting, use `node scripts/verify-public.mjs --github`.
 
 The registry is `public/assets-manifest.json`. Do not add access tokens, private records, source originals with location metadata, or expiring/signed download links.
 
