@@ -14,7 +14,7 @@ The application is `csll-assets`, serving `https://assets.csll.org`. The reposit
 | Build command | `node scripts/validate.mjs` |
 | Deploy command | `npx wrangler deploy --name csll-assets --assets ./public` |
 
-The assets argument identifies the folder to publish; Workers has no separate Pages-style output-directory field. Keep the existing custom domain attached to this application. Cloudflare manages the native build authentication; no deployment secret is stored in GitHub Actions.
+The assets argument identifies the folder to publish; Workers has no separate Pages-style output-directory field. `wrangler.jsonc` also supplies the application name, asset directory, and required compatibility date. The date is pinned to `2026-11-19`, as recommended by the build runtime; do not replace it with an unsupported future date. Keep the existing custom domain attached to this application. Cloudflare manages the native build authentication; no deployment secret is stored in GitHub Actions.
 
 On November 21, all three newsletter photos passed anonymous downloads, image decoding, and exact SHA-256 checks through Cloudflare. Root and JSON manifest requests received managed browser challenges. `assetServingVerified` and `automaticDeploymentVerified` in `hosting.json` deliberately track different claims; a reachable photo alone does not prove automatic Git deployment. The newly published `deployment-check.txt` is used to check that the updated build command deploys a new commit.
 
